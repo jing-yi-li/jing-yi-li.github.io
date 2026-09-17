@@ -344,6 +344,27 @@ a {
     font-weight: 700;
 }
 
+.footer-right {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.profile-photo {
+    width: 78px;
+    height: 78px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
 
 
 /* ==========================================
