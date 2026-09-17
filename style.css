@@ -345,18 +345,23 @@ a {
 }
 
 .footer-right {
-    display: flex;
-    flex-direction: column;
+    position: relative;
 
-    align-items: center;
+    min-width: 120px;
 
-    gap: 12px;
+    text-align: center;
 }
 
-
 .profile-photo {
+    position: absolute;
+
     width: 120px;
     height: 120px;
+
+    left: 50%;
+    bottom: 26px;
+
+    transform: translateX(-50%);
 
     border-radius: 50%;
 
