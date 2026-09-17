@@ -913,3 +913,80 @@ a {
     }
 
 }
+
+/* ==========================================
+   TALK PAGE IMAGES
+========================================== */
+
+.talk-entry-image {
+    grid-template-columns:
+        150px
+        minmax(0, 1fr)
+        280px;
+}
+
+
+.talk-image-wrap {
+    align-self: start;
+}
+
+
+.talk-image {
+    width: 100%;
+    height: 180px;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    filter: grayscale(100%);
+
+    transition:
+        filter 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.talk-entry-image:hover .talk-image {
+    filter: grayscale(0%);
+}
+
+
+@media (max-width: 900px) {
+
+    .talk-entry-image {
+        grid-template-columns:
+            120px
+            1fr;
+    }
+
+    .talk-image-wrap {
+        grid-column: 2;
+
+        margin-top: 16px;
+    }
+
+    .talk-image {
+        max-width: 420px;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .talk-entry-image {
+        grid-template-columns: 1fr;
+    }
+
+    .talk-image-wrap {
+        grid-column: 1;
+    }
+
+    .talk-image {
+        height: auto;
+        max-width: 100%;
+    }
+
+}
