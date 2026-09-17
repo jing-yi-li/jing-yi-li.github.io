@@ -1,6 +1,6 @@
-/* =========================================
+/* ==========================================
    RESET
-========================================= */
+========================================== */
 
 * {
     box-sizing: border-box;
@@ -12,9 +12,15 @@ body {
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    min-height: 100vh;
+
     background: #eeeeec;
-    color: #090909;
+    color: #080808;
 
     font-family:
         Arial,
@@ -22,6 +28,7 @@ body {
         sans-serif;
 
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a {
@@ -30,387 +37,552 @@ a {
 }
 
 
-/* =========================================
-   PAGE
-========================================= */
 
-.page {
+/* ==========================================
+   OUTER PAGE
+========================================== */
+
+.site {
     width: calc(100% - 72px);
-    max-width: 1500px;
+    max-width: 1450px;
 
     min-height: calc(100vh - 72px);
 
     margin: 36px auto;
 
-    padding: 18px 22px 16px;
+    padding:
+        32px
+        70px
+        46px;
 
     background: #ffffff;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr
+        auto;
 }
 
 
-/* =========================================
+
+/* ==========================================
    TOP NAVIGATION
-========================================= */
+========================================== */
 
 .topbar {
     display: grid;
 
     grid-template-columns:
         1fr
-        1fr
+        auto
         1fr;
 
-    align-items: start;
+    align-items: center;
 
-    font-size: 9px;
+    min-height: 34px;
+
+    font-size: 14px;
     line-height: 1;
 
-    font-weight: 700;
-
-    letter-spacing: 0.015em;
-
-    text-transform: uppercase;
+    font-weight: 600;
 }
 
-.brand {
+
+.scholar {
     justify-self: start;
 }
 
-.topbar nav {
-    justify-self: center;
-
-    display: flex;
-
-    gap: 25px;
-}
-
-.topbar nav a {
-    opacity: 0.58;
-
-    transition: opacity 0.18s ease;
-}
-
-.topbar nav a:hover,
-.topbar nav .active {
-    opacity: 1;
-}
-
-.location {
+.linkedin {
     justify-self: end;
 }
 
 
-/* =========================================
-   MAIN
-========================================= */
+.external-link {
+    color: #5b55b8;
 
-main {
-    flex: 1;
+    font-weight: 400;
 
-    display: flex;
+    transition: opacity 0.2s ease;
+}
+
+.external-link:hover {
+    opacity: 0.55;
 }
 
 
-/* =========================================
-   HERO
-========================================= */
+.main-nav {
+    display: flex;
 
-.hero {
-    width: 100%;
+    align-items: center;
+
+    gap: 58px;
+}
+
+
+.main-nav a {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: opacity 0.2s ease;
+}
+
+.main-nav a:not(.active) {
+    opacity: 0.92;
+}
+
+.main-nav a:hover {
+    opacity: 0.45;
+}
+
+
+
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
+
+.home {
+    position: relative;
 
     display: grid;
 
     grid-template-columns:
-        minmax(220px, 0.82fr)
-        minmax(0, 2.25fr);
+        minmax(220px, 1fr)
+        minmax(470px, 1.75fr)
+        minmax(240px, 1fr);
 
-    column-gap: 70px;
+    column-gap: 60px;
 
     align-items: center;
-
-    padding:
-        100px
-        0
-        80px;
 }
 
 
-/* =========================================
-   LEFT-SIDE CREDENTIALS
-========================================= */
 
-.hero-meta {
+/* ==========================================
+   SMALL LABELS
+========================================== */
+
+.small-heading {
+    margin-bottom: 15px;
+
+    font-size: 15px;
+    line-height: 1;
+
+    font-weight: 400;
+
+    text-transform: lowercase;
+}
+
+
+
+/* ==========================================
+   LEFT — ABOUT
+========================================== */
+
+.about {
+    align-self: end;
+
+    padding-bottom: 74px;
+
+    max-width: 260px;
+}
+
+
+.about-copy {
+    color: #a3a3a3;
+
+    font-size: 14px;
+    line-height: 1.26;
+
+    font-weight: 300;
+}
+
+
+.about-copy p {
+    margin: 0 0 20px;
+}
+
+.about-copy p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+/* ==========================================
+   CENTRE — IDENTITY
+========================================== */
+
+.identity {
     align-self: center;
 
-    max-width: 280px;
+    transform: translateY(8px);
+}
 
+
+.identity h1 {
+    margin:
+        0
+        0
+        28px;
+
+    font-size:
+        clamp(
+            48px,
+            4.5vw,
+            68px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.role {
     display: flex;
     flex-direction: column;
 
-    gap: 62px;
-}
+    font-size:
+        clamp(
+            47px,
+            4.6vw,
+            70px
+        );
 
-.meta-label {
-    margin-bottom: 16px;
+    line-height: 1.13;
 
-    font-size: 9px;
+    letter-spacing: -0.045em;
 
-    line-height: 1;
-
-    font-weight: 700;
-
-    letter-spacing: 0.015em;
-
-    text-transform: uppercase;
-}
-
-.meta-block p {
-    margin: 0;
-
-    font-size: 13px;
-
-    line-height: 1.42;
-
-    letter-spacing: -0.01em;
-}
-
-.meta-block .meta-role {
-    margin-bottom: 7px;
-
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
 }
 
 
-/* =========================================
-   HERO TYPOGRAPHY
-========================================= */
-
-.hero-title {
-    align-self: center;
-
-    width: 100%;
-}
-
-.hero h1,
-.hero h2 {
-    margin: 0;
-
-    text-transform: uppercase;
-}
-
-.hero h1 span,
-.hero h2 span {
+.role span {
     display: block;
+
+    white-space: nowrap;
 }
 
 
-/* NAME */
 
-.hero h1 {
-    margin-bottom: 52px;
+/* ==========================================
+   RIGHT — CREDENTIALS
+========================================== */
 
-    font-size:
-        clamp(
-            64px,
-            6.4vw,
-            105px
-        );
+.credentials {
+    align-self: start;
 
-    line-height: 0.79;
+    margin-top: 93px;
 
-    letter-spacing: -0.065em;
-
-    font-weight: 700;
+    text-align: right;
 }
 
 
-/* ROLE */
-
-.hero h2 {
-    font-size:
-        clamp(
-            39px,
-            4.25vw,
-            69px
-        );
-
-    line-height: 0.88;
-
-    letter-spacing: -0.052em;
-
-    font-weight: 700;
+.credentials .small-heading {
+    margin-bottom: 20px;
 }
 
 
-/* =========================================
+.credential-group {
+    margin-bottom: 40px;
+}
+
+
+.credential-group:last-child {
+    margin-bottom: 0;
+}
+
+
+.credential-title {
+    margin:
+        0
+        0
+        7px;
+
+    font-size: 16px;
+    line-height: 1.2;
+
+    font-weight: 400;
+}
+
+
+.credential-detail {
+    margin: 0;
+
+    color: #9e9e9e;
+
+    font-size: 15px;
+    line-height: 1.18;
+
+    font-weight: 300;
+}
+
+
+
+/* ==========================================
    FOOTER
-========================================= */
+========================================== */
 
-footer {
+.footer {
     display: flex;
 
     justify-content: space-between;
     align-items: flex-end;
 
-    padding-top: 30px;
+    padding-top: 24px;
 
-    font-size: 8px;
-
+    font-size: 13px;
     line-height: 1;
 
     font-weight: 700;
-
-    letter-spacing: 0.015em;
-
-    text-transform: uppercase;
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
 
-@media (max-width: 1000px) {
+/* ==========================================
+   LARGE DESKTOP TUNING
+========================================== */
 
-    .hero {
+@media (min-width: 1500px) {
+
+    .site {
+        min-height: 810px;
+    }
+
+}
+
+
+
+/* ==========================================
+   TABLET / SMALL LAPTOP
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .site {
+        padding:
+            28px
+            42px
+            38px;
+    }
+
+
+    .home {
         grid-template-columns:
-            minmax(180px, 0.8fr)
-            2fr;
+            0.85fr
+            1.7fr
+            0.9fr;
 
-        column-gap: 45px;
+        column-gap: 36px;
     }
 
-    .hero h1 {
-        font-size: clamp(58px, 8vw, 90px);
+
+    .main-nav {
+        gap: 34px;
     }
 
-    .hero h2 {
-        font-size: clamp(35px, 5vw, 58px);
+
+    .about {
+        max-width: 220px;
+    }
+
+
+    .about-copy {
+        font-size: 12px;
+    }
+
+
+    .credential-detail {
+        font-size: 13px;
     }
 
 }
 
 
-/* =========================================
+
+/* ==========================================
    MOBILE
-========================================= */
+========================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
 
-    .page {
-        width: calc(100% - 20px);
-
-        min-height: calc(100vh - 20px);
-
-        margin: 10px auto;
-
-        padding: 14px;
+    body {
+        background: #ffffff;
     }
+
+
+    .site {
+        width: 100%;
+
+        min-height: 100svh;
+
+        margin: 0;
+
+        padding:
+            24px
+            22px
+            28px;
+    }
+
 
 
     /* NAV */
 
     .topbar {
         grid-template-columns:
-            auto
-            1fr;
-    }
+            1fr
+            auto;
 
-    .topbar nav {
-        justify-self: end;
-
-        gap: 12px;
-    }
-
-    .location {
-        display: none;
+        row-gap: 28px;
     }
 
 
-    /* HERO */
+    .scholar {
+        grid-column: 1;
+        grid-row: 1;
+    }
 
-    .hero {
+
+    .linkedin {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+
+    .main-nav {
+        grid-column:
+            1 / -1;
+
+        grid-row: 2;
+
+        justify-self: start;
+
+        gap: 25px;
+    }
+
+
+
+    /* MAIN */
+
+    .home {
         display: flex;
 
         flex-direction: column;
 
-        align-items: flex-start;
+        align-items: stretch;
 
         padding:
-            105px
+            90px
             0
             80px;
     }
 
 
-    /* TITLE FIRST */
 
-    .hero-title {
+    /* CENTRAL IDENTITY FIRST */
+
+    .identity {
         order: 1;
-    }
 
-    .hero h1 {
-        margin-bottom: 38px;
-
-        font-size: 18vw;
-    }
-
-    .hero h2 {
-        font-size: 10.8vw;
-
-        line-height: 0.9;
+        transform: none;
     }
 
 
-    /* CREDENTIALS SECOND */
+    .identity h1 {
+        margin-bottom: 26px;
 
-    .hero-meta {
+        font-size: 15vw;
+    }
+
+
+    .role {
+        font-size: 11.5vw;
+
+        line-height: 1.08;
+    }
+
+
+    .role span {
+        white-space: normal;
+    }
+
+
+
+    /* CREDENTIALS */
+
+    .credentials {
         order: 2;
 
-        max-width: none;
+        margin-top: 90px;
 
-        margin-top: 85px;
-
-        display: grid;
-
-        grid-template-columns:
-            1fr
-            1fr;
-
-        gap: 30px;
-    }
-
-    .meta-block p {
-        font-size: 12px;
+        text-align: left;
     }
 
 
-    footer {
-        margin-top: 30px;
+    .credential-group {
+        margin-bottom: 32px;
+    }
+
+
+
+    /* ABOUT */
+
+    .about {
+        order: 3;
+
+        align-self: auto;
+
+        max-width: 390px;
+
+        padding:
+            55px
+            0
+            0;
+    }
+
+
+    .about-copy {
+        font-size: 14px;
+    }
+
+
+
+    /* FOOTER */
+
+    .footer {
+        padding-top: 40px;
     }
 
 }
 
 
-/* =========================================
+
+/* ==========================================
    VERY SMALL MOBILE
-========================================= */
+========================================== */
 
 @media (max-width: 430px) {
 
-    .topbar nav {
-        gap: 9px;
-
-        font-size: 8px;
+    .main-nav {
+        gap: 17px;
     }
 
-    .hero-meta {
-        grid-template-columns: 1fr;
 
-        gap: 35px;
+    .main-nav a,
+    .topbar {
+        font-size: 11px;
+    }
+
+
+    .footer {
+        font-size: 10px;
     }
 
 }
