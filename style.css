@@ -217,7 +217,7 @@ a {
 .identity {
     align-self: center;
 
-    transform: translateY(8px);
+    transform: translate(34px, 8px);
 }
 
 
