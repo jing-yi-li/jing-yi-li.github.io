@@ -1,25 +1,27 @@
 /* =========================================
-   BASE
+   RESET
 ========================================= */
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-
     background: #eeeeec;
-    color: #0b0b0b;
+    color: #090909;
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
+
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -36,19 +38,21 @@ a {
     width: calc(100% - 72px);
     max-width: 1500px;
 
+    min-height: calc(100vh - 72px);
+
     margin: 36px auto;
+
+    padding: 18px 22px 16px;
 
     background: #ffffff;
 
-    padding:
-        18px
-        22px
-        16px;
+    display: flex;
+    flex-direction: column;
 }
 
 
 /* =========================================
-   TOP NAV
+   TOP NAVIGATION
 ========================================= */
 
 .topbar {
@@ -62,9 +66,11 @@ a {
     align-items: start;
 
     font-size: 9px;
+    line-height: 1;
+
     font-weight: 700;
 
-    letter-spacing: 0.02em;
+    letter-spacing: 0.015em;
 
     text-transform: uppercase;
 }
@@ -78,7 +84,18 @@ a {
 
     display: flex;
 
-    gap: 24px;
+    gap: 25px;
+}
+
+.topbar nav a {
+    opacity: 0.58;
+
+    transition: opacity 0.18s ease;
+}
+
+.topbar nav a:hover,
+.topbar nav .active {
+    opacity: 1;
 }
 
 .location {
@@ -87,18 +104,13 @@ a {
 
 
 /* =========================================
-   SMALL SECTION LABELS
+   MAIN
 ========================================= */
 
-.section-label,
-.hero-label {
-    font-size: 9px;
+main {
+    flex: 1;
 
-    font-weight: 700;
-
-    letter-spacing: 0.02em;
-
-    text-transform: uppercase;
+    display: flex;
 }
 
 
@@ -107,19 +119,79 @@ a {
 ========================================= */
 
 .hero {
-    min-height: 700px;
+    width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        1fr
-        2.2fr;
+        minmax(220px, 0.82fr)
+        minmax(0, 2.25fr);
+
+    column-gap: 70px;
 
     align-items: center;
+
+    padding:
+        100px
+        0
+        80px;
 }
 
+
+/* =========================================
+   LEFT-SIDE CREDENTIALS
+========================================= */
+
+.hero-meta {
+    align-self: center;
+
+    max-width: 280px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 62px;
+}
+
+.meta-label {
+    margin-bottom: 16px;
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: 0.015em;
+
+    text-transform: uppercase;
+}
+
+.meta-block p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.42;
+
+    letter-spacing: -0.01em;
+}
+
+.meta-block .meta-role {
+    margin-bottom: 7px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   HERO TYPOGRAPHY
+========================================= */
+
 .hero-title {
-    padding-top: 30px;
+    align-self: center;
+
+    width: 100%;
 }
 
 .hero h1,
@@ -129,215 +201,47 @@ a {
     text-transform: uppercase;
 }
 
-.hero h1 {
-    margin-bottom: 42px;
-
-    font-size:
-        clamp(
-            72px,
-            9vw,
-            145px
-        );
-
-    line-height: 0.76;
-
-    letter-spacing: -0.075em;
-
-    font-weight: 700;
+.hero h1 span,
+.hero h2 span {
+    display: block;
 }
 
-.hero h2 {
+
+/* NAME */
+
+.hero h1 {
+    margin-bottom: 52px;
+
     font-size:
         clamp(
-            45px,
-            6.2vw,
-            100px
+            64px,
+            6.4vw,
+            105px
         );
 
-    line-height: 0.8;
+    line-height: 0.79;
 
     letter-spacing: -0.065em;
 
     font-weight: 700;
 }
 
-.hero span {
-    display: block;
-}
 
+/* ROLE */
 
-/* =========================================
-   CREDENTIALS
-========================================= */
-
-.credentials {
-    padding:
-        110px
-        0
-        140px;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        2.2fr;
-
-    row-gap: 90px;
-}
-
-.credential {
-    text-transform: uppercase;
-}
-
-.credential p {
-    margin: 0;
-
+.hero h2 {
     font-size:
         clamp(
-            26px,
-            3.4vw,
-            54px
+            39px,
+            4.25vw,
+            69px
         );
 
-    line-height: 0.94;
+    line-height: 0.88;
 
-    letter-spacing: -0.045em;
+    letter-spacing: -0.052em;
 
     font-weight: 700;
-}
-
-.credential .credential-role {
-    margin-bottom: 18px;
-
-    font-size:
-        clamp(
-            35px,
-            4.6vw,
-            72px
-        );
-}
-
-
-/* =========================================
-   RESEARCH AREAS
-========================================= */
-
-.research {
-    padding:
-        120px
-        0;
-
-    border-top: 1px solid #111;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        2.2fr;
-}
-
-.research-statement p {
-    margin: 0;
-
-    font-size:
-        clamp(
-            35px,
-            5vw,
-            82px
-        );
-
-    line-height: 0.92;
-
-    letter-spacing: -0.055em;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================
-   ABOUT
-========================================= */
-
-.about {
-    padding:
-        130px
-        0;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        2.2fr;
-}
-
-.about-text {
-    max-width: 620px;
-
-    font-size: 18px;
-
-    line-height: 1.4;
-}
-
-.about-text p {
-    margin:
-        0
-        0
-        28px;
-}
-
-
-/* =========================================
-   BIG LINKS
-========================================= */
-
-.links {
-    min-height: 520px;
-
-    padding:
-        120px
-        0
-        80px;
-
-    border-top: 1px solid #111;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        2.2fr;
-}
-
-.big-links {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-}
-
-.big-links a {
-    font-size:
-        clamp(
-            48px,
-            7vw,
-            110px
-        );
-
-    line-height: 0.95;
-
-    letter-spacing: -0.06em;
-
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    transition: opacity 0.2s ease;
-}
-
-.big-links a:hover {
-    opacity: 0.35;
 }
 
 
@@ -349,14 +253,44 @@ footer {
     display: flex;
 
     justify-content: space-between;
+    align-items: flex-end;
 
     padding-top: 30px;
 
     font-size: 8px;
 
+    line-height: 1;
+
     font-weight: 700;
 
+    letter-spacing: 0.015em;
+
     text-transform: uppercase;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns:
+            minmax(180px, 0.8fr)
+            2fr;
+
+        column-gap: 45px;
+    }
+
+    .hero h1 {
+        font-size: clamp(58px, 8vw, 90px);
+    }
+
+    .hero h2 {
+        font-size: clamp(35px, 5vw, 58px);
+    }
+
 }
 
 
@@ -364,10 +298,12 @@ footer {
    MOBILE
 ========================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 
     .page {
         width: calc(100% - 20px);
+
+        min-height: calc(100vh - 20px);
 
         margin: 10px auto;
 
@@ -375,10 +311,12 @@ footer {
     }
 
 
+    /* NAV */
+
     .topbar {
         grid-template-columns:
-            1fr
-            auto;
+            auto
+            1fr;
     }
 
     .topbar nav {
@@ -392,55 +330,87 @@ footer {
     }
 
 
+    /* HERO */
+
     .hero {
-        min-height: 620px;
+        display: flex;
 
-        display: block;
+        flex-direction: column;
 
-        padding-top: 120px;
+        align-items: flex-start;
+
+        padding:
+            105px
+            0
+            80px;
     }
 
-    .hero-label {
-        margin-bottom: 70px;
+
+    /* TITLE FIRST */
+
+    .hero-title {
+        order: 1;
     }
 
     .hero h1 {
-        font-size: 19vw;
+        margin-bottom: 38px;
+
+        font-size: 18vw;
     }
 
     .hero h2 {
-        margin-top: 40px;
+        font-size: 10.8vw;
 
-        font-size: 12vw;
+        line-height: 0.9;
     }
 
 
-    .credentials,
-    .research,
-    .about,
-    .links {
+    /* CREDENTIALS SECOND */
+
+    .hero-meta {
+        order: 2;
+
+        max-width: none;
+
+        margin-top: 85px;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 30px;
+    }
+
+    .meta-block p {
+        font-size: 12px;
+    }
+
+
+    footer {
+        margin-top: 30px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+
+    .topbar nav {
+        gap: 9px;
+
+        font-size: 8px;
+    }
+
+    .hero-meta {
         grid-template-columns: 1fr;
 
-        gap: 48px;
-    }
-
-
-    .credential p {
-        font-size: 7vw;
-    }
-
-    .credential .credential-role {
-        font-size: 9vw;
-    }
-
-
-    .research-statement p {
-        font-size: 10vw;
-    }
-
-
-    .about-text {
-        font-size: 16px;
+        gap: 35px;
     }
 
 }
